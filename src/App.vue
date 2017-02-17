@@ -4,12 +4,11 @@
     <!-- Welcome -->
     <transition name="slide-move">
       <div class="slide" v-if="slide === 1">
-        <h1>Find your healthcare superhero</h1>
-        <h3>name</h3>
+        <h1>Find your health care superhero name</h1>
         <div class="buttons">
           <button v-on:click="changeSlide(2)">Let's Do This!</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
 
@@ -22,7 +21,7 @@
           <button v-on:click="changeSlide(3), gender='male'">Male</button>
           <button v-on:click="changeSlide(3), gender='neutral'">Neutral</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
 
@@ -36,21 +35,21 @@
           <button v-on:click="changeSlide(4), associate='health_tech'">Health Technology</button>
           <button v-on:click="changeSlide(4), associate='paper_pusher'">Policy Expert</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
 
     <!-- Hate -->
     <transition name="slide-move">
       <div class="slide" v-if="slide === 4">
-        <h1>What drives me crazy about healthcare is...</h1>
+        <h1>What drives me crazy about health care is...</h1>
         <div class="buttons">
           <button v-on:click="changeSlide(5), hate='wait_times'">Long Wait Times</button>
           <button v-on:click="changeSlide(5), hate='paperwork'">Paperwork</button>
           <button v-on:click="changeSlide(5), hate='costs'">Crazy Costs</button>
           <button v-on:click="changeSlide(5), hate='on_fire'">Being On Fire</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
 
@@ -64,7 +63,7 @@
           <button v-on:click="changeSlide(6), animal='horse'">Tiny Horse</button>
           <button v-on:click="changeSlide(6), animal='raptor'">Velociraptor</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
 
@@ -73,10 +72,13 @@
       <div class="slide" v-if="slide === 6">
         <h3 class="left">You are</h3>
         <h1>{{your_name}}</h1>
+        <p style="margin-top:30px;">
+          <a v-bind:href="twitter_link" target="_blank">Share on Twitter</a>
+        </p>
         <div class="buttons">
           <button v-on:click="changeSlide(2)">Start Over</button>
         </div>
-        <h5>A <strong>Healthsparq Labs</strong> Project</h5>
+        <h5>A <strong>HealthSparq Labs</strong> Project</h5>
       </div>
     </transition>
   </div>
@@ -103,6 +105,9 @@ export default {
       } else {
         return Names[this.gender][this.associate][this.hate][this.animal];
       }
+    },
+    twitter_link() {
+      return `https://twitter.com/intent/tweet?text=You%20can%20start%20calling%20me%20${this.your_name}%20@healthsparq%20https://goo.gl/YaCJU3`
     }
   },
   methods: {
@@ -148,6 +153,8 @@ export default {
     font-weight: normal;
     margin: 0;
   }
+  a { text-decoration: none; color: white; }
+  a:hover { text-decoration: underline; }
 
   #app {
     width: 100%;
@@ -157,8 +164,8 @@ export default {
 
   .slide {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     width: calc(100% - 100px);
     max-width: 360px;
@@ -172,19 +179,19 @@ export default {
   .slide-move-leave-active { transition: all 500ms cubic-bezier(0.215, 0.610, 0.355, 1.000); }
   .slide-move-enter {
     opacity: 0;
-    transform: translateX(200%) translateY(-50%) !important;
+    transform: translateX(200%) !important;
   }
   .slide-move-enter-to {
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) !important;
+    transform: translateX(-50%) !important;
   }
   .slide-move-leave {
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) !important;
+    transform: translateX(-50%) !important;
   }
   .slide-move-leave-to {
     opacity: 0;
-    transform: translateX(-200%) translateY(-50%) !important;
+    transform: translateX(-200%) !important;
   }
 
   .buttons {
